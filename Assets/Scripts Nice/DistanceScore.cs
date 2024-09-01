@@ -47,7 +47,7 @@ public class DistanceScore : MonoBehaviour
     {
         // ใช้คะแนนระยะทางเพื่อปรับความเร็วและความสูงการกระโดด
         playerController.moveSpeed = 5f + (distanceCovered / 100f);
-        playerController.jumpForce = 10f + (distanceCovered / 200f);
+        /*playerController.jumpForce = 10f + (distanceCovered / 200f);*/
         
         // ปรับค่าคูณความเร็วในการตก
         playerController.fallMultiplier = 2.5f + (distanceCovered / 100f);
