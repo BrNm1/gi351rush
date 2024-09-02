@@ -13,6 +13,7 @@ public class DistanceScore : MonoBehaviour
     
     private Rigidbody2D rb;
     private Movement playerController;
+    public Energybar energyBar;
 
     void Start()
     {
@@ -47,9 +48,7 @@ public class DistanceScore : MonoBehaviour
     {
         // ใช้คะแนนระยะทางเพื่อปรับความเร็วและความสูงการกระโดด
         playerController.moveSpeed = 5f + (distanceCovered / 100f);
-        /*playerController.jumpForce = 10f + (distanceCovered / 200f);*/
-        
-        // ปรับค่าคูณความเร็วในการตก
-        playerController.fallMultiplier = 2.5f + (distanceCovered / 100f);
+        playerController.slideSpeed = 7f + (distanceCovered / 100f);
+        energyBar.currentEnergy = energyBar.currentEnergy - (distanceCovered / 100000f);
     }
 }

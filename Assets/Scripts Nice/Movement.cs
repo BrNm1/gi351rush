@@ -68,6 +68,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             StartSlide();
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 2 - 1) * Time.deltaTime;
             Debug.Log("Slide");
         }
 
