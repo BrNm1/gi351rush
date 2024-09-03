@@ -5,9 +5,23 @@ using UnityEngine.UI;
 
 public class Energybar : MonoBehaviour
 {
+    public static Energybar Instance { get; private set; }
     public Slider slider;
     public float currentEnergy;
 
+    private void Awake()
+    {
+        // Check if instance already exists and destroy duplicate if found
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: persists across scenes
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Update()
     {
         if (slider.value != currentEnergy)

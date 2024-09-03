@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
 {
     public float maxEnergy = 100f;
     private int random;
-
     
     public Energybar energyBar;
     // Start is called before the first frame update
@@ -25,5 +24,6 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadSceneAsync(random);
         }
+        
     }
 }

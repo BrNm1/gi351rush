@@ -14,12 +14,14 @@ public class DistanceScore : MonoBehaviour
     private Rigidbody2D rb;
     private Movement playerController;
     public Energybar energyBar;
+    public ObstacleSpawner obstacleSpawner; // เชื่อมโยง ObstacleSpawner
 
     void Start()
     {
         lastPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<Movement>(); // รับค่า Movement
+        obstacleSpawner = FindObjectOfType<ObstacleSpawner>(); // ค้นหา ObstacleSpawner ใน Scene
     }
 
     void Update()
@@ -36,6 +38,12 @@ public class DistanceScore : MonoBehaviour
         
         // ปรับความเร็วการวิ่งและความสูงการกระโดดตามคะแนน
         AdjustPlayerAbilities();
+        
+        // ส่งความเร็วปัจจุบันไปยัง ObstacleSpawner
+        if (obstacleSpawner != null)
+        {
+            obstacleSpawner.UpdateSpawnInterval(1f / moveSpeed); // ใช้ความเร็วเพื่ออัพเดตช่วงเวลาการสร้าง
+        }
     }
 
     void UpdateScoreDisplay()

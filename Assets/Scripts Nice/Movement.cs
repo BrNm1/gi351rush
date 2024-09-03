@@ -47,7 +47,7 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isJumping = true;
-            Debug.Log("Jump");
+            //Debug.Log("Jump");
         }
         
         // ปรับความเร็วในการตก
@@ -69,7 +69,7 @@ public class Movement : MonoBehaviour
         {
             StartSlide();
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 2 - 1) * Time.deltaTime;
-            Debug.Log("Slide");
+            //Debug.Log("Slide");
         }
 
         // จัดการกับการหมดเวลาในการสไลด์
