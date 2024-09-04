@@ -55,8 +55,8 @@ public class DistanceScore : MonoBehaviour
     void AdjustPlayerAbilities()
     {
         // ใช้คะแนนระยะทางเพื่อปรับความเร็วและความสูงการกระโดด
-        playerController.moveSpeed = 5f + (distanceCovered / 100f);
-        playerController.slideSpeed = 7f + (distanceCovered / 100f);
+        playerController.moveSpeed = 5f + (distanceCovered / 10f);
+        playerController.slideSpeed = 7f + (distanceCovered / 10f);
         energyBar.currentEnergy = energyBar.currentEnergy - (distanceCovered / 100000f);
     }
 }

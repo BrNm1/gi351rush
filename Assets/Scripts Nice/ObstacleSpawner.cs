@@ -84,7 +84,7 @@ public class ObstacleSpawner : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Ground not found at position: " + spawnX);
+                //Debug.LogWarning("Ground not found at position: " + spawnX);
             }
         }
     }
