@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleSpawner : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public GameObject[] obstacles; // Array สำหรับเก็บ Prefab ของ Obstacle
     public GameObject[] energyPrefabs;
@@ -60,7 +60,7 @@ public class ObstacleSpawner : MonoBehaviour
                 
                 if (Random.Range(0f, 1f) < obstacleSpawnChance)
                 {
-                    float obstacleHeightOffset = -2.1f;
+                    float obstacleHeightOffset = -2.27f;
                     spawnY = obstacleHeightOffset;
                     
                     // เลือก Obstacle แบบสุ่ม

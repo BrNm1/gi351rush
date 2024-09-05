@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     {
         if (energyBar.currentEnergy <= 0)
         {
-            SceneManager.LoadSceneAsync(random);
+            SceneManager.LoadSceneAsync(5);
         }
         
     }

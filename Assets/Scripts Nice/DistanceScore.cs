@@ -15,7 +15,7 @@ public class DistanceScore : MonoBehaviour
     private Movement playerController;
     public Energybar energyBar;
     public ObstacleSpawner obstacleSpawner; // เชื่อมโยง ObstacleSpawner
-
+    
     void Start()
     {
         lastPosition = transform.position;
@@ -38,6 +38,8 @@ public class DistanceScore : MonoBehaviour
         
         // ปรับความเร็วการวิ่งและความสูงการกระโดดตามคะแนน
         AdjustPlayerAbilities();
+
+        GameData.Instance.distanceCovered = distanceCovered;
         
         // ส่งความเร็วปัจจุบันไปยัง ObstacleSpawner
         if (obstacleSpawner != null)
@@ -55,8 +57,8 @@ public class DistanceScore : MonoBehaviour
     void AdjustPlayerAbilities()
     {
         // ใช้คะแนนระยะทางเพื่อปรับความเร็วและความสูงการกระโดด
-        playerController.moveSpeed = 5f + (distanceCovered / 10f);
-        playerController.slideSpeed = 7f + (distanceCovered / 10f);
+        playerController.moveSpeed = 10f + (distanceCovered / 50f);
+        playerController.slideSpeed = 10f + (distanceCovered / 50f);
         energyBar.currentEnergy = energyBar.currentEnergy - (distanceCovered / 100000f);
     }
 }

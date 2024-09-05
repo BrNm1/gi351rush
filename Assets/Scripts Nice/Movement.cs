@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
         
         // บันทึกขนาดของ BoxCollider2D ปกติ
         normalColliderSize = boxCollider.size;
+        
     }
 
     void Update()
@@ -50,19 +51,7 @@ public class Movement : MonoBehaviour
             //Debug.Log("Jump");
         }
         
-        // ปรับความเร็วในการตก
-        if (rb.velocity.y < 0)
-        {
-            if (isJumping && isSliding)
-            {
-                // เพิ่มความเร็วการตกเมื่อสไลด์และกระโดด
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 2 - 1) * Time.deltaTime;
-            }
-            else
-            {
-                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-        }
+        rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
 
         // สไลด์เมื่อกดปุ่ม Shift และอยู่บนพื้น
         if (Input.GetKey(KeyCode.LeftShift))
@@ -105,5 +94,5 @@ public class Movement : MonoBehaviour
 
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
     }
-
+    
 }
