@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public float maxSpawnDistance = 20.0f;
     public LayerMask groundLayer; // LayerMask สำหรับ Ground
     public float despawnDistance = 20.0f; // ระยะห่างที่ Obstacle จะถูกทำลายหลังจาก Player เลยไปแล้ว
+    public float obstacleHeightOffset = -2.27f;
 
     public Transform obstacleListTransform;
     public Transform energyListTransform;
@@ -60,11 +61,18 @@ public class GameManager : MonoBehaviour
                 
                 if (Random.Range(0f, 1f) < obstacleSpawnChance)
                 {
-                    float obstacleHeightOffset = -2.27f;
-                    spawnY = obstacleHeightOffset;
-                    
                     // เลือก Obstacle แบบสุ่ม
                     GameObject obstacle = obstacles[Random.Range(0, obstacles.Length)];
+                    if (obstacle == obstacles[2])
+                    {
+                        obstacleHeightOffset = -0.5f;
+                        spawnY = obstacleHeightOffset;
+                    }
+                    else
+                    {
+                        obstacleHeightOffset = -2.27f;
+                    }
+                    spawnY = obstacleHeightOffset;
 
                     // สร้าง Obstacle ที่ตำแหน่งใหม่
                     GameObject obstacleInstance = Instantiate(obstacle, new Vector3(spawnX, spawnY, 0), Quaternion.identity);

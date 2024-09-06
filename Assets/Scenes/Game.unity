@@ -776,6 +776,7 @@ MonoBehaviour:
   obstacles:
   - {fileID: 5532621769798159952, guid: 2bfe598617ef7bc4fb277b4c81a0f92a, type: 3}
   - {fileID: 3983417416254674527, guid: 1ee9247ac5b4f544d9499fd11a102b68, type: 3}
+  - {fileID: 5532621769798159952, guid: d17a4e575c466684c98e9736b7d262cb, type: 3}
   energyPrefabs:
   - {fileID: 650588976686179174, guid: 6d9f96b842a487f4c95267399462ee63, type: 3}
   spawnInterval: 1
@@ -786,6 +787,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   despawnDistance: 20
+  obstacleHeightOffset: -2.27
   obstacleListTransform: {fileID: 175739546}
   energyListTransform: {fileID: 1200352930}
   activeEnergy: []
@@ -1474,7 +1476,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 10
   energyBar: {fileID: 916076987}
-  obstacleSpawner: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!114 &1374678433
 MonoBehaviour:
   m_ObjectHideFlags: 0
