@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/UIScenes/END5.unity
     guid: 6e02ec53c184e8a4c924976fb3e0e648
+  - enabled: 1
+    path: Assets/UI/UIScenes/END6.unity
+    guid: 7a5ba4f4194dfe347a51196ffd841a68
+  - enabled: 1
+    path: Assets/UI/UIScenes/END7.unity
+    guid: ba832c8af6a16414598f7b9b7a2a9d5f
   m_configObjects: {}
