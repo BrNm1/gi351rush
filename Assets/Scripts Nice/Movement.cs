@@ -15,6 +15,9 @@ public class Movement : MonoBehaviour
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
 
+    //public GameObject playerRun;
+    //public GameObject playerSlide;
+    
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
     private bool isGrounded;
@@ -83,6 +86,9 @@ public class Movement : MonoBehaviour
         boxCollider.size = slideColliderSize;
 
         rb.velocity = new Vector2(slideSpeed, rb.velocity.y);
+        
+        //playerRun.SetActive(false);
+        //playerSlide.SetActive(true);
     }
 
     private void StopSlide()
@@ -93,6 +99,9 @@ public class Movement : MonoBehaviour
         boxCollider.size = normalColliderSize;
 
         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        
+        //playerRun.SetActive(true);
+        //playerSlide.SetActive(false);
     }
     
 }

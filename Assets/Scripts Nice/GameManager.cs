@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Transform obstacleListTransform;
     public Transform energyListTransform;
     
+    private Player player;
     private float lastSpawnX;
     private Transform playerTransform;
     private List<GameObject> activeObstacles = new List<GameObject>(); // List สำหรับเก็บ Obstacle ที่ถูกสร้าง
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
     {
         lastSpawnX = transform.position.x;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // ค้นหา Player ใน Scene
+        player = playerTransform.GetComponent<Player>();
+        
         // ตรวจสอบว่า ObstacleList ถูกเชื่อมโยง
         if (obstacleListTransform == null || energyListTransform == null)
         {
@@ -82,6 +85,7 @@ public class GameManager : MonoBehaviour
                     if (obstacleScript != null)
                     {
                         obstacleScript.Initialize(playerTransform, despawnDistance);
+                        obstacleScript.player = player;
                     
                         // เชื่อมโยง Energybar ที่มีอยู่ใน Scene
                         Energybar energyBar = Energybar.Instance; // ใช้ Singleton Instance

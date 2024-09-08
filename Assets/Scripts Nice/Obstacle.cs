@@ -7,26 +7,20 @@ public class Obstacle : MonoBehaviour
 {
     public Energybar energyBar;
     public float damage;
+    public Player player;
+    
     private Transform playerTransform;
     private float despawnDistance;
-    
-    void Update()
-    {
-        // ตรวจสอบระยะห่างจาก Player และทำลายถ้าจำเป็น
-        /*if (playerTransform != null)
-        {
-            float distanceToPlayer = Mathf.Abs(playerTransform.position.x - transform.position.x);
-            if (distanceToPlayer > despawnDistance)
-            {
-                Destroy(gameObject);
-            }
-        }*/
-    }
     
     public void Initialize(Transform playerTransform, float despawnDistance)
     {
         this.playerTransform = playerTransform;
         this.despawnDistance = despawnDistance;
+
+        if (player == null)
+        {
+            player = playerTransform.GetComponent<Player>();
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -37,9 +31,10 @@ public class Obstacle : MonoBehaviour
                 energyBar.TakeEnergy(damage);
                 Debug.Log("TakeEnergy " + damage);
             }
-            else
+
+            if (player != null && player.spriteRenderer != null)
             {
-                Debug.LogWarning("Energybar is not assigned in Obstacle script.");
+                StartCoroutine(player.BlinkEffect());
             }
         }
     }
@@ -48,4 +43,5 @@ public class Obstacle : MonoBehaviour
     {
         energyBar = newEnergyBar;
     }
+    
 }

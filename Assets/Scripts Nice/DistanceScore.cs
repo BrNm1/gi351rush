@@ -15,6 +15,7 @@ public class DistanceScore : MonoBehaviour
     private Movement playerController;
     public Energybar energyBar;
     public GameManager gameManager; // เชื่อมโยง ObstacleSpawner
+    public EnemyAI enemy;
     
     void Start()
     {
@@ -59,6 +60,7 @@ public class DistanceScore : MonoBehaviour
         // ใช้คะแนนระยะทางเพื่อปรับความเร็วและความสูงการกระโดด
         playerController.moveSpeed = 10f + (distanceCovered / 50f);
         playerController.slideSpeed = 10f + (distanceCovered / 50f);
+        enemy.speed = 10f + (distanceCovered / 50f);
         energyBar.currentEnergy = energyBar.currentEnergy - (distanceCovered / 100000f);
     }
 }
