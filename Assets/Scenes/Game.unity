@@ -520,8 +520,7 @@ Transform:
   m_LocalPosition: {x: 953.8224, y: -7.9459, z: 0}
   m_LocalScale: {x: 1996.18, y: 11.211855, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2114447175}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &433776279
@@ -1754,7 +1753,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
-<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 --- !u!1 &2109142441
@@ -1885,8 +1883,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> parent of ec4806e (add as saw)
 --- !u!1 &2114447174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,10 +1967,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< HEAD
 >>>>>>> Stashed changes
-=======
->>>>>>> parent of ec4806e (add as saw)
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
