@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
+    public Animator animator;
+    public Player player;
 
     //public GameObject playerRun;
     //public GameObject playerSlide;
@@ -37,44 +39,64 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        // ตรวจสอบว่าตัวละครอยู่บนพื้นหรือไม่
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-
-        // เคลื่อนที่ไปข้างหน้า
-        if (!isSliding)
+        if (player.die == true)
         {
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
 
-        // กระโดดเมื่อกดปุ่ม Space และอยู่บนพื้น
-        if (Input.GetKey(KeyCode.Space) && isGrounded)
+        if (player.die == false)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            isJumping = true;
-            //Debug.Log("Jump");
+            // ตรวจสอบว่าตัวละครอยู่บนพื้นหรือไม่
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+            // เคลื่อนที่ไปข้างหน้า
+            if (!isSliding)
+            {
+                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            }
+            
+            // กระโดดเมื่อกดปุ่ม Space และอยู่บนพื้น
+            if (Input.GetKey(KeyCode.Space) && isGrounded)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                isJumping = true;
+                animator.SetBool("Jump", true);
+                animator.SetBool("Sliding", false);
+                //Debug.Log("Jump");
+            }
+        
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+
+            // สไลด์เมื่อกดปุ่ม Shift และอยู่บนพื้น
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                StartSlide();
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 2 - 1) * Time.deltaTime;
+                animator.SetBool("Sliding", true);
+                animator.SetBool("Jump", false);
+                //Debug.Log("Slide");
+            }
+
+            // จัดการกับการหมดเวลาในการสไลด์
+            if (isSliding && Time.time > slideTime)
+            {
+                animator.SetBool("Sliding", false);
+                StopSlide();
+            }
+        
+            // รีเซ็ตสถานะการกระโดดเมื่อถึงพื้น
+            if (isGrounded)
+            {
+                isJumping = false;
+            
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                animator.SetBool("Jump", false);
+            }
         }
         
-        rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-
-        // สไลด์เมื่อกดปุ่ม Shift และอยู่บนพื้น
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            StartSlide();
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier * 2 - 1) * Time.deltaTime;
-            //Debug.Log("Slide");
-        }
-
-        // จัดการกับการหมดเวลาในการสไลด์
-        if (isSliding && Time.time > slideTime)
-        {
-            StopSlide();
-        }
-        
-        // รีเซ็ตสถานะการกระโดดเมื่อถึงพื้น
-        if (isGrounded)
-        {
-            isJumping = false;
-        }
     }
 
     private void StartSlide()

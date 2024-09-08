@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private int random;
     private float normalizedEnergy;
     
+    public bool die = false;
     public Color originalColor;
     public SpriteRenderer spriteRenderer;
     public EnemyAI enemyAI;
@@ -39,7 +40,8 @@ public class Player : MonoBehaviour
         {
             if (playerMovement != null)
             {
-                playerMovement.enabled = false;
+                die = true;
+                //playerMovement.enabled = false;
             }
             
             if (enemyAI != null)
