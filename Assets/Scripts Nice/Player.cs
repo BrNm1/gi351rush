@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     {
         energyBar.currentEnergy = maxEnergy;
         energyBar.SetMaxEnergy(maxEnergy);
-        random = Random.Range(2, 6);
+        random = Random.Range(2, 8);
         
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
@@ -78,6 +78,6 @@ public class Player : MonoBehaviour
     private IEnumerator HandleGameOver()
     {
         yield return new WaitForSeconds(delayBeforeGameOver);
-        SceneManager.LoadSceneAsync(5);
+        SceneManager.LoadSceneAsync(random);
     }
 }
