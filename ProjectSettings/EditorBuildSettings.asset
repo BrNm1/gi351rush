@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/UI/UIScenes/END3.unity
     guid: 1691c6fe8f8a9354aa2c168b28efa3f3
   - enabled: 1
-    path: Assets/Scenes/Noob.unity
-    guid: f395bc60cea242b499915deafc12093c
-  - enabled: 1
     path: Assets/UI/UIScenes/END4.unity
     guid: f967a2f5ac42d184194f219509aed27d
   - enabled: 1
