@@ -13,6 +13,10 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(0);
     }
+    public void LoadToHelp() 
+    {
+        SceneManager.LoadSceneAsync(9);
+     }
     public void ExitGame()
     { 
         Application.Quit();
