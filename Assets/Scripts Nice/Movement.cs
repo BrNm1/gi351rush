@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour
     public LayerMask groundLayer;
     public Animator animator;
     public Player player;
+    public AudioSource jumpAudioSource;
+    public AudioClip jumpSound;
 
     //public GameObject playerRun;
     //public GameObject playerSlide;
@@ -50,10 +52,11 @@ public class Movement : MonoBehaviour
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
             // เคลื่อนที่ไปข้างหน้า
-            if (!isSliding)
+            /*if (!isSliding)
             {
                 rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-            }
+            }*/
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
             
             // กระโดดเมื่อกดปุ่ม Space และอยู่บนพื้น
             if (Input.GetKey(KeyCode.Space) && isGrounded)
@@ -62,6 +65,7 @@ public class Movement : MonoBehaviour
                 isJumping = true;
                 animator.SetBool("Jump", true);
                 animator.SetBool("Sliding", false);
+                jumpAudioSource.PlayOneShot(jumpSound);
                 //Debug.Log("Jump");
             }
         

@@ -9,6 +9,8 @@ public class BlinkEffect : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public float blinkDuration = 0.2f;
     public int blinkCount = 3;
+    public AudioSource hitAudioSource;
+    public AudioClip hitclip;
     
     
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class BlinkEffect : MonoBehaviour
             if (spriteRenderer != null)
             {
                 StartCoroutine(BEffect());
+                hitAudioSource.PlayOneShot(hitclip);
             }
         }
     }
