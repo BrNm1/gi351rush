@@ -1541,7 +1541,7 @@ MonoBehaviour:
   blinkDuration: 0.2
   blinkCount: 3
   hitAudioSource: {fileID: 1270456732}
-  hitclip: {fileID: 8300000, guid: 68b2365852e8a3346af5d94d64bd8165, type: 3}
+  hitclip: {fileID: 8300000, guid: 1f5d02f817f3dde45a39e14eafcbfc7a, type: 3}
 --- !u!61 &1270456730
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1798,7 +1798,7 @@ MonoBehaviour:
   animator: {fileID: 1270456731}
   player: {fileID: 1374678433}
   jumpAudioSource: {fileID: 1374678434}
-  jumpSound: {fileID: 8300000, guid: 4f3a825e3e035e449ab8c3ed4ab7d950, type: 3}
+  jumpSound: {fileID: 8300000, guid: 43671975345a62c488e48830a73a3b24, type: 3}
 --- !u!61 &1374678431
 BoxCollider2D:
   m_ObjectHideFlags: 0
