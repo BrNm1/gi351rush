@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
     public Energybar energyBar;
     public float blinkDuration = 0.2f;
     public int blinkCount = 3;
+    public DistanceScore distanceScore;
+    public float scoreWin = 1500f;
     
     // Start is called before the first frame update
     void Start()
@@ -50,6 +53,11 @@ public class Player : MonoBehaviour
             }
             
             StartCoroutine(HandleGameOver());
+        }
+
+        if (distanceScore.distanceCovered < scoreWin)
+        {
+            
         }
         
         if (enemyAI != null && energyBar.currentEnergy > 0)
