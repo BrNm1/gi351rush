@@ -10,6 +10,7 @@ public class DistanceScore : MonoBehaviour
     private Vector2 lastPosition; // ตำแหน่งล่าสุดของตัวละคร
     public float moveSpeed = 5f; // ความเร็วการวิ่ง
     public float jumpForce = 10f; // ความสูงการกระโดด
+    public PauseManager pauseManager;
     
     private Rigidbody2D rb;
     private Movement playerController;
@@ -61,6 +62,9 @@ public class DistanceScore : MonoBehaviour
         playerController.moveSpeed = 10f + (distanceCovered / 50f);
         playerController.slideSpeed = 10f + (distanceCovered / 50f);
         enemy.speed = 10f + (distanceCovered / 50f);
-        energyBar.currentEnergy = energyBar.currentEnergy - (distanceCovered / 100000f);
+        if (pauseManager.isPaused == false)
+        {
+            energyBar.currentEnergy = energyBar.currentEnergy - (distanceCovered / 100000f);
+        }
     }
 }

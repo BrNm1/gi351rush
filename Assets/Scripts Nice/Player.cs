@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float delayBeforeGameOver = 5f;
     private int random;
     private float normalizedEnergy;
+    private bool gameWin = false;
     
     public bool die = false;
     public Color originalColor;
@@ -20,7 +21,8 @@ public class Player : MonoBehaviour
     public float blinkDuration = 0.2f;
     public int blinkCount = 3;
     public DistanceScore distanceScore;
-    public float scoreWin = 1500f;
+    public float scoreWin = 1400f;
+    public PauseManager pauseManager;
     
     // Start is called before the first frame update
     void Start()
@@ -55,9 +57,10 @@ public class Player : MonoBehaviour
             StartCoroutine(HandleGameOver());
         }
 
-        if (distanceScore.distanceCovered < scoreWin)
+        if (distanceScore.distanceCovered >= scoreWin && gameWin == false)
         {
-            
+            pauseManager.PauseGame();
+            gameWin = true;
         }
         
         if (enemyAI != null && energyBar.currentEnergy > 0)
